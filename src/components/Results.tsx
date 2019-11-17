@@ -17,7 +17,7 @@ class Results extends Component<any, any> {
     }
 
     else {
-      return <Dog dogUrls={dogUrls}/>
+      return <Dog dogUrls={dogUrls} />
     }
   }
 

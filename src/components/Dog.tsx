@@ -6,8 +6,8 @@ import Heart from './Heart'
 
 class Dog extends Component<any, any> {
   isInFavorites = dogUrl => {
-    const favoriteDogList = JSON.parse(localStorage.getItem('favoriteDogList'))
-    if (favoriteDogList.indexOf(dogUrl) === -1) {
+    const favoriteDogList = JSON.parse(localStorage.getItem('favoriteDogList')) || []
+    if (favoriteDogList.indexOf(dogUrl) !== -1) {
       return false
     } else {
       return true
@@ -29,23 +29,18 @@ class Dog extends Component<any, any> {
     if (!dogUrls) {
       return null
     }
-    
-    // return dogUrls.map((dogUrl, index) => {
-    //   return (
-    //     <Fragment>
-    //       <img src={dogUrl} key={index} onClick={this.onClick} />
-    //       {this.renderHeart(dogUrl)}
-    //     </Fragment>
-    //     )
-    //   })
-    // }
 
     let div = []
     let i;
-    for (i = 0; i < dogUrls.length; i += 3) {
+    const dogUrlsLength = dogUrls.length - (dogUrls.length % 3);
+    for (i = 0; i < dogUrlsLength; i += 3) {
       let dogUrl1 = dogUrls[i],
           dogUrl2 = dogUrls[i+1],
           dogUrl3 = dogUrls[i+2];
+
+      if (!dogUrl1 || !dogUrl2 || !dogUrl3) {
+        break
+      }
 
       div.push(
         <div className='row'>
@@ -65,22 +60,23 @@ class Dog extends Component<any, any> {
       )
     }
 
-    if (i > dogUrls.length) {
-      const blankDivLength = 3 - (dogUrls % 3);
-      i -= 2;
+    if (i < dogUrls.length) {
+      const blankDivLength = 3 - (dogUrls.length % 3);
       let rowDivCols = []
       for (; i < dogUrls.length; i++) {
         let dogUrl = dogUrls[i]
         rowDivCols.push(
-          <div className='col dog'> 
-            <img className='dog-image' src={dogUrl} key={dogUrl} onClick={this.onClick} />
-            <div className='heart-image'>{this.renderHeart(dogUrl)}</div>
-          </div>
+        <div className='col'> 
+          <div className='dog-image square' style={{backgroundImage: `url(${dogUrl})`}} key={dogUrl} onClick={this.onClick}></div>
+          <div className='heart-image'>{this.renderHeart(dogUrl)}</div>
+        </div>
         )
       }
       for (i = 0; i < blankDivLength; i++) {
         rowDivCols.push(
-          <div className='col'></div>
+          <div className='col'>
+            <div className='dog-image'></div>
+          </div>
         )
       }
       div.push(
@@ -114,4 +110,13 @@ class Dog extends Component<any, any> {
   }
 }
 
-export default connect(null, { addToFavorites, removeFromFavorites })(Dog)
+const mapStateToProps = state => {
+  return {
+    redHeartIcon: state.redHeartIcon,
+    redHeartAlt: state.redHeartAlt,
+    whiteHeartIcon: state.whiteHeartIcon,
+    whiteHeartAlt: state.whiteHeartAlt
+  }
+}
+
+export default connect(mapStateToProps, { addToFavorites, removeFromFavorites })(Dog)
