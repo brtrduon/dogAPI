@@ -1,0 +1,24 @@
+.dog, .dog-image {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.dog-image {
+  max-height: 100%;
+  max-width: 100%;
+  border-radius: 5px;
+}
+
+.heart-image {
+  position: absolute;
+  bottom: 5px;
+  right: 20px;
+}
+
+.square {
+  width: 100%;
+  padding-bottom: 100%;
+  background-size: cover;
+  background-position: center;
+}

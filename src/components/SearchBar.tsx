@@ -25,9 +25,9 @@ class SearchBar extends Component<any, any> {
   render() {
     return (
       <Fragment>
-        <form onSubmit={this.onSubmit}>
-          <input type='text' onChange={this.onChange} />
-          <button>Search <img src={icons.searchIcon} /></button>
+        <form className='form-inline mt-4 mb-4' onSubmit={this.onSubmit}>
+          <input className='form-control w-75' type='text' onChange={this.onChange} />
+          <button className='btn btn-primary fas fa-search'>Search <img src={icons.searchIcon} /></button>
         </form>
       </Fragment>
     )

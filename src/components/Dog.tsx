@@ -30,15 +30,68 @@ class Dog extends Component<any, any> {
       return null
     }
     
-    return dogUrls.map((dogUrl, index) => {
-      return (
-        <Fragment>
-          <img src={dogUrl} key={index} onClick={this.onClick} />
-          {this.renderHeart(dogUrl)}
-        </Fragment>
-        )
-      })
+    // return dogUrls.map((dogUrl, index) => {
+    //   return (
+    //     <Fragment>
+    //       <img src={dogUrl} key={index} onClick={this.onClick} />
+    //       {this.renderHeart(dogUrl)}
+    //     </Fragment>
+    //     )
+    //   })
+    // }
+
+    let div = []
+    let i;
+    for (i = 0; i < dogUrls.length; i += 3) {
+      let dogUrl1 = dogUrls[i],
+          dogUrl2 = dogUrls[i+1],
+          dogUrl3 = dogUrls[i+2];
+
+      div.push(
+        <div className='row'>
+          <div className='col'>
+            <div className='dog-image square' style={{backgroundImage: `url(${dogUrl1})`}} key={dogUrl1} onClick={this.onClick}></div>
+            <div className='heart-image'>{this.renderHeart(dogUrl1)}</div>
+          </div>
+          <div className='col'>
+            <div className='dog-image square' style={{backgroundImage: `url(${dogUrl2})`}} key={dogUrl2} onClick={this.onClick}></div>
+            <div className='heart-image'>{this.renderHeart(dogUrl2)}</div>
+          </div>
+          <div className='col'> 
+            <div className='dog-image square' style={{backgroundImage: `url(${dogUrl3})`}} key={dogUrl3} onClick={this.onClick}></div>
+            <div className='heart-image'>{this.renderHeart(dogUrl3)}</div>
+          </div>
+        </div>
+      )
     }
+
+    if (i > dogUrls.length) {
+      const blankDivLength = 3 - (dogUrls % 3);
+      i -= 2;
+      let rowDivCols = []
+      for (; i < dogUrls.length; i++) {
+        let dogUrl = dogUrls[i]
+        rowDivCols.push(
+          <div className='col dog'> 
+            <img className='dog-image' src={dogUrl} key={dogUrl} onClick={this.onClick} />
+            <div className='heart-image'>{this.renderHeart(dogUrl)}</div>
+          </div>
+        )
+      }
+      for (i = 0; i < blankDivLength; i++) {
+        rowDivCols.push(
+          <div className='col'></div>
+        )
+      }
+      div.push(
+        <div className='row'>
+          {rowDivCols}
+        </div>
+      )
+    }
+
+    return div
+  }
 
   renderHeart = dogUrl => {
     let icon = 'whiteHeartIcon',
@@ -54,9 +107,9 @@ class Dog extends Component<any, any> {
 
   render() {
     return (
-      <Fragment>
+      <div className='container'>
         {this.renderDogs()}
-      </Fragment>
+      </div>
     )
   }
 }
