@@ -39,7 +39,7 @@ class Dog extends Component<any, any> {
           dogUrl3 = dogUrls[i+2];
 
       div.push(
-        <div className='row'>
+        <div className='row pb-5'>
           <div className='col'>
             <div className='dog-image square' style={{backgroundImage: `url(${dogUrl1})`}} key={dogUrl1} onClick={this.onClick}></div>
             <div className='heart-image'>{this.renderHeart(dogUrl1)}</div>
@@ -76,7 +76,7 @@ class Dog extends Component<any, any> {
         )
       }
       div.push(
-        <div className='row'>
+        <div className='row pb-5'>
           {rowDivCols}
         </div>
       )
