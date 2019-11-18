@@ -1,7 +1,3 @@
 export const GET_BREED = 'GET_BREED'
 export const ERROR = 'ERROR'
 export const FAVORITES = 'GET_FAVORITES'
-export const RED_HEART_ICON = 'RED_HEART_ICON'
-export const RED_HEART_ALT = 'RED_HEART_ALT'
-export const WHITE_HEART_ICON = 'WHITE_HEART_ICON'
-export const WHITE_HEART_ALT = 'WHITE_HEART_ALT'

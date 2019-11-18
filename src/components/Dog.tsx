@@ -86,12 +86,12 @@ class Dog extends Component<any, any> {
   }
 
   renderHeart = dogUrl => {
-    let icon = this.props.whiteHeartIcon,
-        alt = this.props.whiteHeartAlt
+    let icon = 'whiteHeartIcon',
+        alt = 'white heart icon'
 
     if (this.isInFavorites(dogUrl)) {
-      icon = this.props.redHeartIcon
-      alt = this.props.redHeartAlt
+      icon = 'redHeartIcon'
+      alt = 'red heart icon'
     }
 
     return <Heart icon={icon} alt={alt} />
@@ -106,13 +106,4 @@ class Dog extends Component<any, any> {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    redHeartIcon: state.redHeartIcon,
-    redHeartAlt: state.redHeartAlt,
-    whiteHeartIcon: state.whiteHeartIcon,
-    whiteHeartAlt: state.whiteHeartAlt
-  }
-}
-
-export default connect(mapStateToProps, { addToFavorites, removeFromFavorites })(Dog)
+export default connect(null, { addToFavorites, removeFromFavorites })(Dog)

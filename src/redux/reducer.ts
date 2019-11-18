@@ -1,4 +1,4 @@
-import { GET_BREED, ERROR, FAVORITES, RED_HEART_ICON, RED_HEART_ALT, WHITE_HEART_ICON, WHITE_HEART_ALT } from './types'
+import { GET_BREED, ERROR, FAVORITES } from './types'
 
 export const reducer = (state = {}, action) => {
   switch (action.type) {
@@ -20,30 +20,6 @@ export const reducer = (state = {}, action) => {
       return {
         ...state,
         favoriteDogUrls: action.payload
-      }
-
-    case RED_HEART_ICON:
-      return {
-        ...state,
-        redHeartIcon: action.payload
-      }
-
-    case RED_HEART_ALT:
-      return {
-        ...state,
-        redHeartAlt: action.payload
-      }
-
-    case WHITE_HEART_ICON:
-      return {
-        ...state,
-        whiteHeartIcon: action.payload
-      }
-
-    case WHITE_HEART_ALT:
-      return {
-        ...state,
-        whiteHeartAlt: action.payload
       }
 
     default:
