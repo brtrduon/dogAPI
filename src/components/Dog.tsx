@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import { addToFavorites, removeFromFavorites } from '../redux/actions'
@@ -7,20 +7,20 @@ import Heart from './Heart'
 class Dog extends Component<any, any> {
   isInFavorites = dogUrl => {
     const favoriteDogList = JSON.parse(localStorage.getItem('favoriteDogList')) || []
-    if (favoriteDogList.indexOf(dogUrl) !== -1) {
-      return false
-    } else {
-      return true
-    }
+    return favoriteDogList.indexOf(dogUrl) !== -1
   }
 
   onClick = e => {
-    const dogUrl = e.target.src
+    const bgImgStr = e.target.style.backgroundImage
+    const dogUrl = bgImgStr.slice(5, (bgImgStr.length - 2))
+
     if (this.isInFavorites(dogUrl)) {
       this.props.removeFromFavorites(dogUrl)
     } else {
       this.props.addToFavorites(dogUrl)
     }
+
+    this.forceUpdate()
   }
   
   renderDogs = () => {
@@ -37,10 +37,6 @@ class Dog extends Component<any, any> {
       let dogUrl1 = dogUrls[i],
           dogUrl2 = dogUrls[i+1],
           dogUrl3 = dogUrls[i+2];
-
-      if (!dogUrl1 || !dogUrl2 || !dogUrl3) {
-        break
-      }
 
       div.push(
         <div className='row'>
@@ -90,12 +86,12 @@ class Dog extends Component<any, any> {
   }
 
   renderHeart = dogUrl => {
-    let icon = 'whiteHeartIcon',
-        alt = 'white heart icon'
+    let icon = this.props.whiteHeartIcon,
+        alt = this.props.whiteHeartAlt
 
     if (this.isInFavorites(dogUrl)) {
-      icon = 'redHeartIcon'
-      alt = 'red heart icon'
+      icon = this.props.redHeartIcon
+      alt = this.props.redHeartAlt
     }
 
     return <Heart icon={icon} alt={alt} />

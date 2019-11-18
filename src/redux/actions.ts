@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { GET_BREED, ERROR, FAVORITES } from './types'
+import { GET_BREED, ERROR, FAVORITES, RED_HEART_ICON, RED_HEART_ALT, WHITE_HEART_ICON, WHITE_HEART_ALT } from './types'
 
 export const searchBreed = breed => async dispatch => {
   try {
@@ -7,6 +7,30 @@ export const searchBreed = breed => async dispatch => {
     dispatch({
       type: GET_BREED,
       payload: res.data.message
+    })
+
+    await
+    dispatch({
+      type: RED_HEART_ICON,
+      payload: 'redHeartIcon'
+    })
+
+    await
+    dispatch({
+      type: RED_HEART_ALT,
+      payload: 'red heart icon'
+    })
+
+    await
+    dispatch({
+      type: WHITE_HEART_ICON,
+      payload: 'whiteHeartIcon'
+    })
+
+    await
+    dispatch({
+      type: WHITE_HEART_ALT,
+      payload: 'white heart icon'
     })
   } catch {
     dispatch({
@@ -24,7 +48,18 @@ export const getFavorites = () => async dispatch => {
     dispatch({
       type: FAVORITES,
       payload: favoriteDogList
-      
+    })
+
+    await
+    dispatch({
+      type: RED_HEART_ICON,
+      payload: 'redHeartIcon'
+    })
+
+    await
+    dispatch({
+      type: RED_HEART_ALT,
+      payload: 'red heart icon'
     })
   } catch (error) {
     console.log(error)
