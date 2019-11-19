@@ -5,7 +5,7 @@ module.exports = {
       '<rootDir>/__mocks__/fileMock.js',
     '\\.(css|less|scss)$': '<rootDir>/__mocks__/styleMock.js',
   },
-  setupTestFrameworkScriptFile: 'jest-enzyme',
+  setupTestFrameworkScriptFile, setupFilesAfterEnv: 'jest-enzyme',
   testEnvironment: 'enzyme',
   transform: {
     '^.+\\.tsx?$': 'ts-jest',
