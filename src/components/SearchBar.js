@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { icons } from '../assets'
 import { searchBreed } from '../redux/actions'
 
-class SearchBar extends Component<any, any> {
+class SearchBar extends Component {
   state = {
     breed: ''
   }
@@ -27,7 +27,7 @@ class SearchBar extends Component<any, any> {
       <Fragment>
         <form className='form-inline mt-4 mb-5' onSubmit={this.onSubmit}>
           <input className='form-control w-75' type='text' onChange={this.onChange} />
-          <button className='btn btn-primary fas fa-search'>Search <img src={icons.searchIcon} /></button>
+          <button className='btn btn-primary fas fa-search'>Search <img src={icons.searchIcon} alt='searchIcon' /></button>
         </form>
       </Fragment>
     )

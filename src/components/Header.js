@@ -1,8 +1,8 @@
-import React, { FC } from 'react'
+import React from 'react'
 import styled from '@emotion/styled'
 import Heart from './Heart'
 
-const Header: FC = () => {
+const Header = () => {
   return (
     <Container>
       <Title>Dog Breeds</Title>

@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import Dog from './Dog'
 
-class Results extends Component<any, any> {
+class Results extends Component {
   renderDogUrls = () => {
     const dogUrls = this.props.dogUrls
     const error = this.props.error

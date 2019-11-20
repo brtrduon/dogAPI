@@ -6,7 +6,7 @@ import Heart from './Heart'
 import { getFavorites } from '../redux/actions'
 import Dog from './Dog'
 
-class Favorites extends Component<any, any> {
+class Favorites extends Component {
   componentDidMount() {
     this.props.getFavorites()
   }

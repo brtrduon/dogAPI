@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { addToFavorites, removeFromFavorites } from '../redux/actions'
 import Heart from './Heart'
 
-class Dog extends Component<any, any> {
+class Dog extends Component {
   isInFavorites = dogUrl => {
     const favoriteDogList = JSON.parse(localStorage.getItem('favoriteDogList')) || []
     return favoriteDogList.indexOf(dogUrl) !== -1

@@ -1,13 +1,8 @@
-import React, { FC } from 'react'
+import React from 'react'
 import styled from '@emotion/styled'
 import { icons } from '../assets'
 
-interface Props {
-  icon: string
-  alt: string
-}
-
-const Heart: FC<Props> = ({ icon, alt }) => {
+const Heart  = ({ icon, alt }) => {
   return <HeartIcon src={icons[icon]} alt={alt} />
 }
 
