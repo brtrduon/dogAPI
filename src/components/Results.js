@@ -13,7 +13,7 @@ class Results extends Component {
     }
 
     else if (error) {
-      return <Fragment>Invalid dog breed</Fragment>
+      return <div className='invalid-breed'>Invalid dog breed</div>
     }
 
     else {
