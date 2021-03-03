@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import styled from '@emotion/styled'
 import { connect } from 'react-redux'
 
@@ -13,13 +13,13 @@ class Favorites extends Component {
 
   render() {
     return (
-      <Fragment>
+      <div id='favorites'>
         <Title className='pt-4 mb-4'>
           <Heart icon="redHeartIcon" alt="red heart icon" />
           <span className='ml-4'>Favorites</span>
         </Title>
         <Dog dogUrls={this.props.dogUrls} />
-      </Fragment>
+      </div>
     )
   }
 }

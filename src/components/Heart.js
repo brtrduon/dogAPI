@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 import { icons } from '../assets'
 
 const Heart  = ({ icon, alt }) => {
-  return <HeartIcon src={icons[icon]} alt={alt} />
+  return <HeartIcon src={icons[icon]} alt={alt} className={alt} />
 }
 
 const HeartIcon = styled.img({
